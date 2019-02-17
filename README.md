@@ -36,7 +36,7 @@ a instanceof Object // true
 typeof null // object
 
 ```
-函数传参为引用类型时是按值进行传递的
+函数传参为引用类型时则传递的是一个引用
 ```
 var a = new Object()
 
@@ -48,4 +48,23 @@ function set(obj) {
 set(a)
 console.log(a) // '1' //函数内部创建的对象会在函数执行完毕后销毁
 
+```
+这是更好的一道题：[引用传参](https://blog.fundebug.com/2017/08/09/explain_value_reference_in_js/)
+```
+function changeAgeAndReference(person) {
+    person.age = 25;
+    person = {
+        name: 'John',
+        age: 50
+    };
+    
+    return person;
+}
+var personObj1 = {
+    name: 'Alex',
+    age: 30
+};
+var personObj2 = changeAgeAndReference(personObj1);
+console.log(personObj1); // -> ?
+console.log(personObj2); // -> ?
 ```
