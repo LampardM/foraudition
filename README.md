@@ -81,6 +81,7 @@ function isNaN(n) {
 * 判断是null
 ```
 function isNull(m) {
+    // 不是false不是undefined也不是0
     return !m && typeof m != 'undefined' && m != 0
 }
 ```
