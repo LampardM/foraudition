@@ -28,6 +28,8 @@ Promise是微任务，第一个函数的回调是立即执行的而then的回调
 #### 基本类型和引用类型
 * 基本类型：string number boolean unll undefined symbol。基本类型的数据存储在栈中，而引用类型的数据存储在堆中，栈中存储的是指针
 * js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
+* number boolean 都有toString()方法，并返回一个字符串
+* parseFloat('11.22.33') // 11.22 第二个小数点会被忽略
 
 ```
 var a = new Array()
@@ -68,3 +70,5 @@ var personObj2 = changeAgeAndReference(personObj1);
 console.log(personObj1); // -> ?
 console.log(personObj2); // -> ?
 ```
+***
+#### 运算符和类型转换
