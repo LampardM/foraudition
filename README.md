@@ -27,7 +27,7 @@ Promise是微任务，第一个函数的回调是立即执行的而then的回调
 ***
 #### 基本类型和引用类型
 * 基本类型：string number boolean unll undefined symbol
-js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
+* js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
 
 ```
 var a = new Array()
@@ -46,7 +46,6 @@ function set(obj) {
     obj.name = '2'
 }
 set(a)
-console.log(a) // '1'
-// 函数内部创建的对象会在函数执行完毕后销毁
+console.log(a) // '1' //函数内部创建的对象会在函数执行完毕后销毁
 
 ```
