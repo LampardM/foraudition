@@ -38,13 +38,13 @@ a instanceof Object // true
 typeof null // object
 
 ```
-函数传参为引用类型时则传递的是一个引用
+函数传参为引用类型时则传递的是一个引用，传给函数的是数值的一个引用，函数中对其属性的修改外部可见，但用新引用覆盖其则在外部不可见
 ```
 var a = new Object()
 
 function set(obj) {
     obj.name = '1'
-    obj = new Object()
+    obj = new Object() // 新引用覆盖对外部不可见
     obj.name = '2'
 }
 set(a)
@@ -71,4 +71,17 @@ console.log(personObj1); // -> ?
 console.log(personObj2); // -> ?
 ```
 ***
-#### 运算符和类型转换
+#### 运算符和类型判断以及类型转换
+* 实现isNaN可利用其不等于自身来实现
+```
+function isNaN(n) {
+    return n !== n
+}
+```
+* 判断是null
+```
+function isNull(m) {
+    return !m && typeof m != 'undefined' && m != 0
+}
+```
+* == 和 != 比较若类型不同，先偿试转换类型，再作值比较，最后返回值比较结果，而 === 和 !== 只有在相同类型下，才会比较其值。
