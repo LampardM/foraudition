@@ -20,9 +20,33 @@
     });
 
     console.log('4');
+
 ```
 Promise是微任务，第一个函数的回调是立即执行的而then的回调是要放在微任务列表里的，process.nextTick的回调是微任务，需要放在微任务列表。setTtimeout是宏任务，回调注册到宏任务列表，也就是微任务回调2先执行，3放入微任务列表，执行4然后微任务列表里3开始执行，最后执行宏任务回调1。
 注意：一个宏任务里包含多个微任务，一定是需要把此宏任务里的微任务全部执行完毕才能进入下一个宏任务的执行。
 ***
 #### 基本类型和引用类型
 * 基本类型：string number boolean unll undefined symbol
+js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
+
+```
+var a = new Array()
+a instanceof Array // true
+a instanceof Object // true
+typeof null // object
+
+```
+函数传参为引用类型时是按值进行传递的
+```
+var a = new Object()
+
+function set(obj) {
+    obj.name = '1'
+    obj = new Object()
+    obj.name = '2'
+}
+set(a)
+console.log(a) // '1'
+// 函数内部创建的对象会在函数执行完毕后销毁
+
+```
