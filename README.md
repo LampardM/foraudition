@@ -1,7 +1,7 @@
 ### audition纪要
 ***
 #### 调用栈相关
-[宏任务和微任务](https://juejin.im/post/59e85eebf265da430d571f89)
+* [宏任务和微任务](https://juejin.im/post/59e85eebf265da430d571f89)
 * macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
 * micro-task(微任务)：Promise，process.nextTick
 
