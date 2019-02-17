@@ -1,7 +1,7 @@
 ### audition纪要
 ***
 #### 调用栈相关
-* 宏任务和微任务
+宏任务和微任务
 * macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
 * micro-task(微任务)：Promise，process.nextTick
 
