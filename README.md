@@ -26,7 +26,7 @@ Promise是微任务，第一个函数的回调是立即执行的而then的回调
 注意：一个宏任务里包含多个微任务，一定是需要把此宏任务里的微任务全部执行完毕才能进入下一个宏任务的执行。
 ***
 #### 基本类型和引用类型
-* 基本类型：string number boolean unll undefined symbol
+* 基本类型：string number boolean unll undefined symbol。基本类型的数据存储在栈中，而引用类型的数据存储在堆中，栈中存储的是指针
 * js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
 
 ```
