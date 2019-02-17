@@ -1,7 +1,7 @@
 ### audition纪要
 ***
 #### 调用栈相关
-宏任务和微任务
+[宏任务和微任务](https://juejin.im/post/59e85eebf265da430d571f89)
 * macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
 * micro-task(微任务)：Promise，process.nextTick
 
@@ -25,3 +25,4 @@ Promise是微任务，第一个函数的回调是立即执行的而then的回调
 注意：一个宏任务里包含多个微任务，一定是需要把此宏任务里的微任务全部执行完毕才能进入下一个宏任务的执行。
 ***
 #### 基本类型和引用类型
+* 基本类型：string number boolean unll undefined symbol
