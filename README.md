@@ -81,8 +81,8 @@ function isNaN(n) {
 * 判断是null
 ```
 function isNull(m) {
-    // 不是false不是undefined也不是0
-    return !m && typeof m != 'undefined' && m != 0
+    // 不是false不是undefined也不是0也不是NaN
+    return !m && typeof m != 'undefined' && m != 0 && m == m
 }
 ```
 * == 和 != 比较若类型不同，先尝试转换类型，再作值比较，最后返回值比较结果，而 === 和 !== 只有在相同类型下，才会比较其值。
@@ -102,3 +102,6 @@ function point(x, y) {
 }
 ```
 point函数会把x，y为0的情况忽略，所以还是用!!较为保险。
+***
+#### 深拷贝和浅拷贝
+* [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
