@@ -72,7 +72,7 @@ console.log(personObj2); // -> ?
 ```
 ***
 #### 运算符和类型判断以及类型转换
-* 实现isNaN可利用其不等于自身来实现
+* 关于NaN需要注意的是：全局函数isNaN的作用是在检查一个值能否被Number成功转换，能就返回false，否则返回true，所以isNaN('abc') isNaN(undefined) isNaN({})都是true，尽管传入的值并不是NaN。实现isNaN可利用其不等于自身来实现
 ```
 function isNaN(n) {
     return n !== n
@@ -87,5 +87,5 @@ function isNull(m) {
 ```
 * == 和 != 比较若类型不同，先尝试转换类型，再作值比较，最后返回值比较结果，而 === 和 !== 只有在相同类型下，才会比较其值。
 * 关于!!：!可以将变量转换为boolean类型，null NaN undefined 0和空字符串都转换为true，其他都转换为false。此链接第一句话有误：[!!的转换](http://www.cnblogs.com/tison/p/8111712.html)
-* [详细类型转换表](https://juejin.im/post/59ad2585f265da246a20e026)
+* undefined转换为数字时会被转换成NaN，[详细类型转换表](https://juejin.im/post/59ad2585f265da246a20e026)
 * +很神奇的地方：1 + 2 + '3' // '33'而不是'123'
