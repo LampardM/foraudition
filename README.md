@@ -102,6 +102,7 @@ function point(x, y) {
 }
 ```
 point函数会把x，y为0的情况忽略，所以还是用!!较为保险。
+* 关于toString()，数组的toString方法经过重新定义，所以[1]会被转换成"1"，而Object.prototype.toString.call([1])的结果是"[object Array]"
 ***
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
