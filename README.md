@@ -73,7 +73,7 @@
     ```
 ***
 #### 运算符和类型判断以及类型转换
-* 关于NaN需要注意的是：全局函数isNaN的作用是在检查一个值能否被Number成功转换，能就返回false，否则返回true，所以isNaN('abc') isNaN(undefined) isNaN({})都是true，尽管传入的值并不是NaN。实现isNaN可利用其不等于自身来实现
+* 关于NaN需要注意的是：全局函数isNaN的作用是在检查一个值能否被Number成功转换，能就返回false，否则返回true，所以isNaN('abc') isNaN(undefined) isNaN({})都是true，尽管传入的值并不是NaN。实现isNaN可利用其不等于自身来实现，或者可以使用Number.isNaN()
     ```
     function isNaN(n) {
         return n !== n
@@ -119,5 +119,25 @@
     // 返回key不为c的值
     ```
 ***
+* 神奇的+
+  ```
+  +'3.14' // 3.14
+  +new Date() // 会直接得到时间戳
+  ```
+* 神奇的～
+  ```
+  var a = 'abc'
+  ~a.indexOf('a') // true
+  ~a.indexOf('d') // false
+  // ~只有在indexOf返回为-1时将其转换为假值0，其余一律转换为真值
+  ```
+* 神奇的转换
+  ```
+  [] == ![] // true
+  [1] == 1 // true
+  ['1'] == 1 // true
+  "" == {} // false
+  0 == {} // false
+  ```
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
