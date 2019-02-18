@@ -87,7 +87,7 @@ function isNull(m) {
 ```
 * == 和 != 比较若类型不同，先尝试转换类型，再作值比较，最后返回值比较结果，而 === 和 !== 只有在相同类型下，才会比较其值。
 * 关于!!：!可以将变量转换为boolean类型，null NaN undefined 0和空字符串都转换为true，其他都转换为false。此链接第一句话有误：[!!的转换](http://www.cnblogs.com/tison/p/8111712.html)
-* undefined转换为数字时会被转换成NaN，[详细类型转换表](https://juejin.im/post/59ad2585f265da246a20e026)
+* {}转换成数字是NaN而""转成0，undefined转换为数字时会被转换成NaN [详细类型转换表](https://juejin.im/post/59ad2585f265da246a20e026)
 * +很神奇的地方：1 + 2 + '3' // '33'而不是'123'
 * 判断条件的转换：if || && 会把0 -0 undefined null "" NaN转换为false
 ```
@@ -103,6 +103,20 @@ function point(x, y) {
 ```
 point函数会把x，y为0的情况忽略，所以还是用!!较为保险。
 * 关于toString()，数组的toString方法经过重新定义，所以[1]会被转换成"1"，而Object.prototype.toString.call([1])的结果是"[object Array]"
+* 关于JSON.stringify()的一个应用：
+  ```
+  var a = {
+        b: 42,
+        c: "42",
+        d: [1, 2, 3]
+    };
+
+    JSON.stringify(a, ["b", "c"]); // "{"b":42,"c":"42"}"
+    JSON.stringify(a, function (k, v) {
+        if (k !== "c") return v;
+    });
+    // 返回key不为c的值
+  ```
 ***
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
