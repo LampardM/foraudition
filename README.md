@@ -30,14 +30,15 @@
 * js中所有数字都是浮点数，所以在计算时会存在意想不到情况，例如：0.1 + 0.2 === 0.3是false
 * number boolean 都有toString()方法，并返回一个字符串
 * parseFloat('11.22.33') // 11.22 第二个小数点会被忽略
+* 数组实例的instanceof
 
-```
-var a = new Array()
-a instanceof Array // true
-a instanceof Object // true
-typeof null // object
+    ```
+    var a = new Array()
+    a instanceof Array // true
+    a instanceof Object // true
+    typeof null // object
 
-```
+    ```
 * 函数传参为引用类型时则传递的是一个引用，传给函数的是数值的一个引用，函数中对其属性的修改外部可见，但用新引用覆盖其则在外部不可见
     ```
     var a = new Object()
