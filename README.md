@@ -89,3 +89,16 @@ function isNull(m) {
 * 关于!!：!可以将变量转换为boolean类型，null NaN undefined 0和空字符串都转换为true，其他都转换为false。此链接第一句话有误：[!!的转换](http://www.cnblogs.com/tison/p/8111712.html)
 * undefined转换为数字时会被转换成NaN，[详细类型转换表](https://juejin.im/post/59ad2585f265da246a20e026)
 * +很神奇的地方：1 + 2 + '3' // '33'而不是'123'
+* 判断条件的转换：if || && 会把0 -0 undefined null "" NaN转换为false
+```
+function point(x, y) {
+    if (!x) {
+        x = 320;
+    }
+    if (!y) {
+        y = 240;
+    }
+    return { x: x, y: y };
+}
+```
+point函数会把x，y为0的情况忽略，所以还是用!!较为保险。
