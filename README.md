@@ -145,3 +145,9 @@
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
 ***
+#### 关于jQuery的扩展
+* [插件的两种形式](https://www.cnblogs.com/shy1766IT/p/5762707.html)
+***
+#### 继承以及各种继承的优缺点
+[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
+***
