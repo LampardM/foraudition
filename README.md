@@ -137,9 +137,33 @@
   ['1'] == 1 // true
   "" == {} // false
   0 == {} // false
+  null == false // false 但是!null == true是true
+  null == true // false
+  null == undefined // 设计缺陷
+  ```
+* 关于ToPrimitive：此方法将值转换为原始类型的值，所谓原始类型就是Null undefined number boolean string。其他都是非原始的值，如Array Function Object。
+  转换原则：
+  ToPrimitive(input,hint)转换为原始类型的方法，根据hint目标类型进行转换。
+  hint只有两个值：String和Number
+  如果没有传hint，Date类型的input的hint默认为String，其他类型的input的hint默认为Number
+  Number 类型先判断 valueOf()方法的返回值，如果不是原始值，再判断 toString()方法的返回值
+  String 类型先判断 toString()方法的返回值，如果不是原始值，再判断 valueOf()方法的返回值
+  ```
+  [10].valueOf() // [10] 还不是原始类型的值
+  [10].toString() // "10" 是原始类型的值，故[10] == 10 true
   ```
 ***
 #### typeof和instanceof
+* 什么是instanceof：用来判断某个构造函数(a)的prototype是否在要判断对象(b)的原型链上
+  ```
+  var a = function() {}
+  var b = new a()
+  b instanceof a // true
+  Object.getPrototypeOf(b) === a.prototype 
+
+  typeof NaN // 'number'
+  ```
+
 
 ***
 #### 深拷贝和浅拷贝
@@ -150,4 +174,17 @@
 ***
 #### 继承以及各种继承的优缺点
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
+***
+#### New到底做了什么
+* [解析](http://www.cnblogs.com/faith3/p/6209741.html)
+  ```
+    var a = function(){}
+    var b = new a()
+
+    1 创建了一个新对象
+    2 将构造函数的作用域赋给这个新对象，this指向这个新对象
+    3 执行构造函数中的代码，为这个新对象添加属性
+    4 返回新对象
+
+  ```
 ***
