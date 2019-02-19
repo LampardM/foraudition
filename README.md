@@ -139,5 +139,9 @@
   0 == {} // false
   ```
 ***
+#### typeof和instanceof
+
+***
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
+***
