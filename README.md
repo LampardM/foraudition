@@ -172,6 +172,13 @@
 #### 关于jQuery的扩展
 * [插件的两种形式](https://www.cnblogs.com/shy1766IT/p/5762707.html)
 ***
+#### 什么是原型链
+* 这就是原型链
+  ```
+  a.__proto__.__proto__ .....
+  ```
+* 原型链的图解：[图解原型链](https://www.cnblogs.com/libin-1/p/5820550.html)
+***
 #### 继承以及各种继承的优缺点
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
