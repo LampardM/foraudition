@@ -163,7 +163,13 @@
 
   typeof NaN // 'number'
   ```
-
+* Function instanceof Object == true // true Object instanceof Funtion // true ?
+  ```
+  Function.__proto__.__proto__ === Object.prototype
+  Object.__proto__ === Function.prototype
+  Object.constructor === Function
+  ```
+  [彻底搞懂Function和Object的关系](https://juejin.im/post/58358606570c35005e4142bd)
 
 ***
 #### 深拷贝和浅拷贝
@@ -183,7 +189,7 @@
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
 #### New到底做了什么
-* [解析](http://www.cnblogs.com/faith3/p/6209741.html)
+* [New的实现步骤](http://www.cnblogs.com/faith3/p/6209741.html)
   ```
   var a = function(){}
   var b = new a()
