@@ -149,5 +149,5 @@
 * [插件的两种形式](https://www.cnblogs.com/shy1766IT/p/5762707.html)
 ***
 #### 继承以及各种继承的优缺点
-[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
+* 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
