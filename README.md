@@ -201,3 +201,8 @@
 
   ```
 ***
+#### setTimeout那些神奇的问题
+* [实现轮询](https://www.cnblogs.com/Mainz/archive/2009/04/27/1444691.html)
+* for循环和setTimeout的经典问题：[setTimeout和作用域](https://www.cnblogs.com/Trista-l/p/7380830.html)
+* 如何解决上述问题：[闭包let和匿名函数](https://www.jb51.net/article/122489.htm)
+***
