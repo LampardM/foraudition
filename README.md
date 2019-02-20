@@ -251,3 +251,22 @@
 * 很重要的一句话：Promise的特点是无等待(就是为什么Promise的第一个参数会立即执行)，所以在没有await的情况下执行async函数，它会立即执行，返回一个Promise对象，并且，绝不会阻塞后面的语句。
 * await后面是Promise的话，那么会阻塞await表达式下一行的代码，等外部同步的代码执行完毕后再回到这里
 ***
+#### 烦人的this
+***
+#### 同样烦人的闭包
+* 不使用全局变量记录一个函数调用次数
+  ```
+  function count() {
+      var count
+
+      return function() {
+          count++
+          console.log(count)
+      }
+  }
+
+  var num = count()
+  num() // 1
+  num() // 2
+  ```
+***
