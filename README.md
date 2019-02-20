@@ -4,26 +4,66 @@
 * [宏任务和微任务](https://juejin.im/post/59e85eebf265da430d571f89)
 * macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
 * micro-task(微任务)：Promise，process.nextTick
-
     ```
-        setTimeout(function(){
-            console.log('1')
-        });
+    setTimeout(function(){
+        console.log('1')
+    });
 
-        new Promise(function(resolve){
-            console.log('2');
-            for(var i = 0; i < 10000; i++){
-                i == 99 && resolve();
-            }
-        }).then(function(){
-            console.log('3')
-        });
+    new Promise(function(resolve){
+        console.log('2');
+        for(var i = 0; i < 10000; i++){
+            i == 99 && resolve();
+        }
+    }).then(function(){
+        console.log('3')
+    });
 
-        console.log('4');
+    console.log('4');
 
     ```
     Promise是微任务，第一个函数的回调是立即执行的而then的回调是要放在微任务列表里的，process.nextTick的回调是微任务，需要放在微任务列表。setTtimeout是宏任务，回调注册到宏任务列表，也就是微任务回调2先执行，3放入微任务列表，执行4然后微任务列表里3开始执行，最后执行宏任务回调1。
     注意：一个宏任务里包含多个微任务，一定是需要把此宏任务里的微任务全部执行完毕才能进入下一个宏任务的执行。
+    下面是更复杂的的一道题：
+    ```
+    console.log('1');
+
+    setTimeout(function() {
+        console.log('2');
+        process.nextTick(function() {
+            console.log('3');
+        })
+        new Promise(function(resolve) {
+            console.log('4');
+            resolve();
+        }).then(function() {
+            console.log('5')
+        })
+    })
+    process.nextTick(function() {
+        console.log('6');
+    })
+    new Promise(function(resolve) {
+        console.log('7');
+        resolve();
+    }).then(function() {
+        console.log('8')
+    })
+
+    setTimeout(function() {
+        console.log('9');
+        process.nextTick(function() {
+            console.log('10');
+        })
+        new Promise(function(resolve) {
+            console.log('11');
+            resolve();
+        }).then(function() {
+            console.log('12')
+        })
+    })
+    ```
+* 加入async和await后的执行顺序[async和执行顺序相关](https://mp.weixin.qq.com/s/sPpdVb5VerfFV960s--_PQ)
+
 ***
 #### 基本类型和引用类型
 * 基本类型：string number boolean unll undefined symbol。基本类型的数据存储在栈中，而引用类型的数据存储在堆中，栈中存储的是指针
@@ -205,4 +245,9 @@
 * [实现轮询](https://www.cnblogs.com/Mainz/archive/2009/04/27/1444691.html)
 * for循环和setTimeout的经典问题：[setTimeout和作用域](https://www.cnblogs.com/Trista-l/p/7380830.html)
 * 如何解决上述问题：[闭包let和匿名函数](https://www.jb51.net/article/122489.htm)
+***
+#### async和await
+* [深入理解async和await](https://segmentfault.com/a/1190000007535316)
+* 很重要的一句话：Promise的特点是无等待(就是为什么Promise的第一个参数会立即执行)，所以在没有await的情况下执行async函数，它会立即执行，返回一个Promise对象，并且，绝不会阻塞后面的语句。
+* await后面是Promise的话，那么会阻塞await表达式下一行的代码，等外部同步的代码执行完毕后再回到这里
 ***
