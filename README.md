@@ -214,6 +214,54 @@
 ***
 #### 深拷贝和浅拷贝
 * [基本实现](https://www.cnblogs.com/Chen-XiaoJun/p/6217373.html)
+  ```
+  function deepClone(initObj, finalObj) {
+      obj = finalObj || {}
+      for(var i in initObj) {
+          var pro = initObj[i]
+          if(pro === obj) {
+              continue // 避免相互引用
+          }
+
+          if(typeof initObj[i] === 'object'){
+              obj[i] = Object.prototype.toString.call(initObj[i] === '[object array]' ? [] : {})
+              deepClone(initObj[i, ]obj[i])
+          } else {
+              obj[i] = initObj[i]
+          }
+      }
+
+      return obj
+  }
+  ```
+
+  浅拷贝就更简单了
+  ```
+  function lowClone(initObj, finalObj) {
+      var obj = finalObj || {}
+      for(var i in initObj) {
+          obj[i] = initObj[i]
+      }
+
+      return obj
+  }
+  ```
+* 实现Object.assign
+  ```
+  Object.prototype.meAssign = function(target) {
+      for(var i = 1;i < arguments.length;i++){
+          var source = arguments[i]
+
+          for(var key in source) {
+              if(Object.prototype.hasOwnProperty.call(source, key)) {
+                  target[key] = source[key]
+              }
+          }
+      }
+
+      return target
+  }
+  ```
 ***
 #### 关于jQuery的扩展
 * [插件的两种形式](https://www.cnblogs.com/shy1766IT/p/5762707.html)
