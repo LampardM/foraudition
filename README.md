@@ -339,7 +339,7 @@
       }
   }
   ```
-* this的值并不会按作用域链去找
+* this的值并不会按作用域链去找（非箭头函数）
   ```
   var name = 'big'
 
@@ -351,7 +351,30 @@
 
   window.a.fn() // undefined而不是去找作用域链上层的'big'
   ```
+* 箭头函数的this [有营养的教程](https://juejin.im/post/59bfe84351882531b730bac2)
+  非常重要的概念：箭头函数的this始终指向函数定义时的this，而非执行时。箭头函数需要记着这句话：箭头函数中没有this绑定，必须通过查找作用域链来决定其值，如果箭头函数被非箭头函数包含，则this绑定的是最近一层非箭头函数的this，否则，this为 undefined。理解下来就是箭头函数的确定是在定义时，绑定的是最近一层非箭头函数的this，但是注意！注意！注意！并不是意味着箭头函数的this就是不变的，只是说箭头函数的this绑定了最近一层非箭头函数的this，具体this是哪个值还是要看最近一层函数的执行情况
+  ```
+  var name = "windowsName";
 
+  var a = {
+      name : "Cherry",
+
+      func1: function () {
+        console.log(this.name)     
+  },
+
+  func2: function () {
+      setTimeout( () => {
+        this.func1()
+      },100);
+    }
+  };
+
+  var c = a.func2
+  c() // 此时this是window，this.func1()会报错
+  a.func2()     // Cherry
+
+  ```
 ***
 #### 同样烦人的闭包
 * 不使用全局变量记录一个函数调用次数
