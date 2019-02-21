@@ -358,3 +358,26 @@
   num() // 2
   ```
 ***
+#### 作用域的那些事
+***
+#### 柯里化和函数式编程
+* 柯里化的定义：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。即是接受一个参数，返回一个函数。
+  ```
+  这是一个打折的函数，接受一个商品价格和折扣
+  function discount(price, discount){
+      return price * discount
+  }
+
+  但是这样不够通用，因为每次都要输入两个参数，柯里化的处理方式
+  function newDiscount(discount){
+      return function(price){
+          return price * discount
+      }
+  }
+
+  var priceResult = newDiscount(0.1) // 普通用户
+  priceResult(500) // 500的商品的折扣价格
+  var vipPriceResult = newDiscount(0.2) // vip用户
+  vipPriceResult(500) // 500商品vip用户的价格
+  ```
+***
