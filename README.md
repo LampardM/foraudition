@@ -260,6 +260,32 @@
   say.call("Bob", "World", "Hi"); //==> From Bob: Hello World Ha Hi
   函数执行的的this指向第一个参数，tetfunction()也就是testfunction.call(window, xxx)的语法糖
   ```
+* 改变this指向的实现：[call apply和bind的实现](https://github.com/Abiel1024/blog/issues/16)
+  ```
+  基础版本call：
+  Function.prototype.meCall = function(context) {
+      context.fn = this // 此处this就是.meCall这个.前的函数
+      context.fn()
+      delete context.fn
+  }
+
+  带参数的call：
+  Function.prototype.meCall = function(context, ...params) {
+      context.fn = this
+      context.fn(...params)
+      delete context.fn
+  }
+
+  apply同理，只是注意传参为数组
+
+  bind的实现(返回一个改变this指向的函数，而不是立即执行)：
+  Function.prototype.bind = function(context, ...params) {
+      var me = this
+      return function(...params) {
+          me.call(context, ...params)
+      }
+  }
+  ```
 
 ***
 #### 同样烦人的闭包
