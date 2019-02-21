@@ -419,3 +419,5 @@
 #### escape encodeURI encodeURIComponent的使用场景
 * [详细教程](https://www.cnblogs.com/season-huang/p/3439277.html)
   总的来说：escape对字符串编码，encodeURI对整个url进行编码，encodeURIComponent对url的参数编码
+#### 关于reduce
+***
