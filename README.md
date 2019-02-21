@@ -254,7 +254,9 @@
 #### 烦人的this
 * 先从call bind apply开始吧[学会this这篇文章就够了](https://www.jianshu.com/p/6b4333e78bf5)
   ```
-  function say(content1, content2) { console.log("From " + this + ": Hello "+ content1 + "Ha "content2); } 
+  function say(content1, content2) { 
+      console.log("From " + this + ": Hello "+ content1 + "Ha "content2); 
+  }
   say.call("Bob", "World", "Hi"); //==> From Bob: Hello World Ha Hi
   函数执行的的this指向第一个参数，tetfunction()也就是testfunction.call(window, xxx)的语法糖
   ```
