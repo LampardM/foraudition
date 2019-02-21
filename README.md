@@ -377,7 +377,37 @@
   ```
 ***
 #### 作用域的那些事
+* 现在我明白了！！！到底什么是词法作用域，也就是静态作用域。javaScript使用的是词法作用域，也就是函数的作用域是在函数定义的时候确定的，而不是函数执行时！牢记这句话！
+  ```
+  var a = 'window'
+  function bar() {
+      console.log(a)
+  }
 
+  function foo() {
+      var a = 'foo'
+
+      bar()
+  }
+
+  foo() // window
+  ```
+* 关于变量提升：
+  ```
+  function foo() {
+      console.log('foo1')
+  }
+
+  foo()
+
+  function foo() {
+      console.log('foo2')
+  }
+
+  foo()
+
+  console两次foo2，因为函数声明会被提升
+  ```
 ***
 #### 同样烦人的闭包
 * 不使用全局变量记录一个函数调用次数
