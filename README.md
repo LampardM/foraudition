@@ -291,7 +291,7 @@
 ***
 #### setTimeout那些神奇的问题
 * [实现轮询](https://www.cnblogs.com/Mainz/archive/2009/04/27/1444691.html)
-* for循环和setTimeout的经典问题：[setTimeout和作用域](https://www.cnblogs.com/Trista-l/p/7380830.html)
+* for循环和setTimeout的经典问题：[setTimeout和作用域](https://www.cnblogs.com/Trista-l/p/7380830.html)，[这个解释也很好](https://www.jianshu.com/p/9b4a54a98660)
 * 如何解决上述问题：[闭包let和匿名函数](https://www.jb51.net/article/122489.htm)
 ***
 #### async和await
@@ -376,6 +376,9 @@
 
   ```
 ***
+#### 作用域的那些事
+
+***
 #### 同样烦人的闭包
 * 不使用全局变量记录一个函数调用次数
   ```
@@ -392,8 +395,18 @@
   num() // 1
   num() // 2
   ```
-***
-#### 作用域的那些事
+* 小小的注意点：
+  ```
+  var obj = {
+      fn: function() {
+          console.log(fn)
+      } 
+  }
+
+  obj.fn()
+
+  会报错，在对象内部的函数表达式访问不到存放当前函数的变量，但是可以通过this访问
+  ```
 ***
 #### 柯里化和函数式编程
 * 柯里化的定义：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。即是接受一个参数，返回一个函数。
@@ -420,4 +433,9 @@
 * [详细教程](https://www.cnblogs.com/season-huang/p/3439277.html)
   总的来说：escape对字符串编码，encodeURI对整个url进行编码，encodeURIComponent对url的参数编码
 #### 关于reduce
+```
+[1, 2, 3].reduce(function(pre, next) {
+    return pre + next
+})
+```
 ***
