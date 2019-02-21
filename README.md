@@ -339,6 +339,18 @@
       }
   }
   ```
+  * this的值并不会按作用域链去找
+  ```
+  var name = 'big'
+
+  var a = {
+      fn: function() {
+          console.log(this.name)
+      }
+  }
+
+  window.a.fn() // undefined而不是去找作用域链上层的'big'
+  ```
 
 ***
 #### 同样烦人的闭包
