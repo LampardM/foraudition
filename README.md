@@ -297,7 +297,12 @@
 #### async和await
 * [深入理解async和await](https://segmentfault.com/a/1190000007535316)
 * 很重要的一句话：Promise的特点是无等待(就是为什么Promise的第一个参数会立即执行)，所以在没有await的情况下执行async函数，它会立即执行，返回一个Promise对象，并且，绝不会阻塞后面的语句。
-* await后面是Promise的话，那么会阻塞await表达式下一行的代码，等外部同步的代码执行完毕后再回到这里
+* await后面是Promise的话，那么会阻塞await表达式下一行的代码，等外部同步的代码执行完毕后再回到这里，如果await后面不是Promise的话，那么await也会阻塞await表达式下一行的代码。后面是Promise返回结果的方式也是如下：
+  ```
+  Promise.reslove().then(function(){
+      // 此任务也被推入微任务列表等待执行，执行完毕后再执行await的下一行代码
+  })
+  ```
 ***
 #### 烦人的this
 * 先从call bind apply开始吧[学会this这篇文章就够了](https://www.jianshu.com/p/6b4333e78bf5)
