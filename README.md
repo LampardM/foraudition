@@ -408,6 +408,29 @@
 
   console两次foo2，因为函数声明会被提升
   ```
+  还有一个经典问题：
+  ```
+  function foo() {
+      console.log(a)
+      a = 'test'
+  }
+
+  foo() // a is not defined
+  a // test
+  // 函数声明内部不带var的变量是全局变量，全局变量在给其赋值的函数体内并不存在提升，所以console不是undefined，而是直接报错
+  ```
+  函数声明和变量声明提升的优先级和注意点
+  ```
+  console.log(foo)
+
+  function foo() {
+      console.log('foo')
+  }
+
+  var foo = 1
+
+  console是函数foo，因为在进入执行上下文时，首先会处理函数声明，其次会处理变量声明，如果如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性。
+  ```
 ***
 #### 同样烦人的闭包
 * 不使用全局变量记录一个函数调用次数
