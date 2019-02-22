@@ -469,3 +469,5 @@
 })
 ```
 ***
+#### vue是如何实现双向绑定的
+* [实现自己的vue](https://www.cnblogs.com/libin-1/p/6893712.html)
