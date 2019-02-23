@@ -273,7 +273,41 @@
   ```
 * 原型链的图解：[图解原型链](https://www.cnblogs.com/libin-1/p/5820550.html)
 ***
-#### 继承以及各种继承的优缺点
+#### 继承以及各种继承的优缺点(重头戏)
+* 先来说说对象
+  ```
+  // 字面量的方式
+  var obj = {
+      name: 'zl'
+  }
+
+  // 工厂模式，显示的创建对象
+  function createObj() {
+    var obj = new Object()
+    obj.name = 'zl'
+
+    return obj
+  }
+
+  // 构造函数模式
+  function Person() {
+      this.name = 'zl'
+  }
+
+  var obj = new Person()
+
+  // create形式
+  Object.create(obj)
+
+  function meCerate(obj) {
+      // 实现create
+      function f() {}
+      f.prototype = obj
+
+      return new f()
+  }
+  ```
+  
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
 #### New到底做了什么
@@ -510,36 +544,4 @@
 ***
 #### vue是如何实现双向绑定的
 * [实现自己的vue](https://www.cnblogs.com/libin-1/p/6893712.html)
-#### 面向对象
-* 创建对象的几种方式
-  ```
-  // 字面量的方式
-  var obj = {
-      name: 'zl'
-  }
-
-  // 工厂模式，显示的创建对象
-  function createObj() {
-    var obj = new Object()
-    obj.name = 'zl'
-
-    return obj
-  }
-
-  // 构造函数模式
-  function Person() {
-      this.name = 'zl'
-  }
-
-  var obj = new Person()
-
-  // Object.create(obj)
-
-  实现create:
-  function cerate(obj) {
-      function f() {}
-      f.prototype = obj
-
-      return new f()
-  }
-  ```
+***
