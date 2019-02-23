@@ -173,6 +173,7 @@
 * 神奇的转换
   ```
   [] == ![] // true
+  [1] == [1] //false
   [1] == 1 // true
   ['1'] == 1 // true
   "" == {} // false
@@ -274,6 +275,32 @@
 * 原型链的图解：[图解原型链](https://www.cnblogs.com/libin-1/p/5820550.html)
 ***
 #### 继承以及各种继承的优缺点(重头戏)
+* Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()的区别
+  ```
+  var obj = {
+      name: 'zlong',
+      sex: 'male'
+  }
+
+  Object.getOwnPropertyDescriptor(obj, 'name') // 返回这个对象name属性的数据属性
+  Object.getOwnPropertyDescriptors(obj) // {name:{...}, sex: {...}} 返回一个对象包含这个对象所有属性的数据属性
+  ```
+* 访问器属性和数据属性
+  数据属性：Configurable Enumerable Writable Value
+  访问器属性：Configurable Enumerable get set
+* Object.defineProperty()和Object.defineProperties()的区别
+  ```
+  var a = { 
+      name: 'zlong',
+      sex; 'male'
+    }
+  
+  Object.defineProperty(a, 'name', {...})
+  Object.defineProperties(a, {
+      name: {...},
+      sex: {...}
+  })
+  ```
 * 先来说说对象
   ```
   // 字面量的方式
@@ -283,18 +310,34 @@
 
   // 工厂模式，显示的创建对象
   function createObj() {
-    var obj = new Object()
-    obj.name = 'zl'
+    var o = new Object()
+    0.name = 'zl'
 
-    return obj
+    return o
   }
 
-  // 构造函数模式
+  var obj = createObj()
+
+  // 构造函数模式(优点在于每个实例通过instaneof都可以确定其类型，也就是其构造函数是什么)
   function Person() {
       this.name = 'zl'
   }
 
-  var obj = new Person()
+  var obj1 = new Person()
+  var obj2 = new Person() // 当然确定也很明显，就是每创建一个实例，构造函数的属性和方法都要创建一遍\
+
+  // 原型模式
+  function Person() {}
+
+  Person.prototype.name = 'zl'
+  Person.prototype.gifts = ['fe']
+
+  var obj1 = new Person()
+  var obj2 = new Person()
+
+  obj1.gifts.push('js')
+  obj2.gifts // ['fe', 'js']
+  // 原型模式的好处在于不用重复创建属性，但是缺点在于引用类型的属性被所有实例共享
 
   // create形式
   Object.create(obj)
