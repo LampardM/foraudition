@@ -338,7 +338,17 @@
 
   obj1.gifts.push('js')
   obj2.gifts // ['fe', 'js']
-  // 原型模式的好处在于不用重复创建属性，但是缺点在于引用类型的属性被所有实例共享
+  // 原型模式的好处在于不用重复创建属性，但是缺点在于引用类型的属性被所有实例共享，这是原型模式最大的缺点，替代的方案就是组合式，也就是原型和构造函数相结合的方式，构造函数负责实例的属性，而原型负责共享的属性和方法
+
+  function Person() {
+      this.name = 'zl'
+      this,gifts = ['fe']
+  }
+
+  Person.prototype.sex = 'male'
+  Person.prototype.sayHi = function() {
+      console.log('hi')
+  }
 
   * 很重要的一点是理解什么是原型对象：无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor(构造函数)属性，这个属性包含一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法。
 
@@ -409,6 +419,26 @@
       sex: 'male'
   }
   其实这样也可以，但是是在对原型对象的constructor属性要求不严格的情况下，因为此时Person的原型对象的constructor属性已经不再是构造函数的constructor了，而是变成了新的对象的constructor，也就是Object，即便通过强制设置Person.prototype的constructor为Person，但是会导致constructor变成可枚举，可通过Object.defineProperty(Person.prototype, 'constructor', { enumerable: false })再将其设置为不可枚举，这样就太麻烦了，得不偿失。
+  ```
+
+* 关于重写原型对实例的影响
+  ```
+  function Person() {
+      this.saiHi = function() {
+          console.log('hi')
+      }
+  }
+
+  var p1 = new Person()
+
+  Person.prototype = {
+      constructor: Person,
+      sayHi: function() {
+          console.log('hi')
+      }
+  }
+
+  p1.sayHi() // error 重写原型切断了已经创建实例和原型对象之间的关系
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
