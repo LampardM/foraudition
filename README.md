@@ -382,6 +382,33 @@
       return !(name in object) && !object.hasOwnProperty(name)
   }
 
+  还有一点需要注意，操作符in会获取所有实例和原型对象的属性，而Object.keys()获取的是实例属性
+  function Person() {}
+
+  Person.prototype.name = 'zl'
+
+  var p1 = new Person()
+  p1.sex = 'male'
+
+  Object.keys(Person.prototype) // name
+  Object.keys(p1) // sex
+
+  // Object.getOwnPropertyNames可以获取实例所有属性，不管是否可以枚举
+
+  ```
+
+* 为什么我们习惯原型对象一个一个添加属性，而不是全部赋值给一个新的对象
+  ```
+  function Person() {}
+  Person.prototype.name = 'zl'
+  Person.prototype.sex = 'male'
+
+  而不是：
+  Person.prototype = {
+      name: 'zl',
+      sex: 'male'
+  }
+  其实这样也可以，但是是在对原型对象的constructor属性要求不严格的情况下，因为此时Person的原型对象的constructor属性已经不再是构造函数的constructor了，而是变成了新的对象的constructor，也就是Object，即便通过强制设置Person.prototype的constructor为Person，但是会导致constructor变成可枚举，可通过Object.defineProperty(Person.prototype, 'constructor', { enumerable: false })再将其设置为不可枚举，这样就太麻烦了，得不偿失。
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
