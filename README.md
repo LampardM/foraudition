@@ -274,7 +274,7 @@
   ```
 * 原型链的图解：[图解原型链](https://www.cnblogs.com/libin-1/p/5820550.html)
 ***
-#### 继承以及各种继承的优缺点(重头戏)
+#### 对象，继承以及各种继承的优缺点(重头戏)
 * Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()的区别
   ```
   var obj = {
@@ -284,6 +284,7 @@
 
   Object.getOwnPropertyDescriptor(obj, 'name') // 返回这个对象name属性的数据属性
   Object.getOwnPropertyDescriptors(obj) // {name:{...}, sex: {...}} 返回一个对象包含这个对象所有属性的数据属性
+  相同点就是获取的都是对象实例属性，而不是对象原型属性
   ```
 * 访问器属性和数据属性
   数据属性：Configurable Enumerable Writable Value
@@ -324,7 +325,7 @@
   }
 
   var obj1 = new Person()
-  var obj2 = new Person() // 当然确定也很明显，就是每创建一个实例，构造函数的属性和方法都要创建一遍\
+  var obj2 = new Person() // 当然确定也很明显，就是每创建一个实例，构造函数的属性和方法都要创建一遍
 
   // 原型模式
   function Person() {}
@@ -339,6 +340,22 @@
   obj2.gifts // ['fe', 'js']
   // 原型模式的好处在于不用重复创建属性，但是缺点在于引用类型的属性被所有实例共享
 
+  * 很重要的一点是理解什么是原型对象：无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会自动获得一个constructor(构造函数)属性，这个属性包含一个指向prototype属性所在函数的指针。就拿前面的例子来说，Person.prototype.constructor指向Person。而通过这个构造函数，我们还可继续为原型对象添加其他属性和方法。
+
+  * 原型对象上的属性不会被实例重写，最多只能是被屏蔽
+
+  * hasOwnProperty可以知道实例属性到底是实例属性还是原型属性
+  function Person() {
+      this.name = 'zl'
+  }
+
+  var pone = new Person()
+  var ptwo = new Person()
+
+  pone.name = 'zlong'
+  pone.hasOwnProperty('name') // true
+  ptwo.hasOwnProperty('name') // false
+
   // create形式
   Object.create(obj)
 
@@ -349,6 +366,22 @@
 
       return new f()
   }
+  ```
+* in操作符和hasPrototypeProperty
+  ```
+  function Person() {
+      this.name = 'zl'
+  }
+  var p1 = new Person()
+
+  p1.hasPrototypeProperty('name') // false
+  'name' in Person // true
+  
+  // 所以实现自己的hasPrototypeProperty：
+  function meHasPrototypeProperty(name) {
+      return !(name in object) && !object.hasOwnProperty(name)
+  }
+
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
