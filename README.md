@@ -288,6 +288,22 @@
   4 返回新对象
 
   ```
+* 如何实现一个New
+  ```
+  function meNew() {
+      // 创建一个新对象
+      var o = new Object()
+
+      // 将构造函数的作用域赋值给这个新对象，this指向这个新对象
+      Constructor = [].shift.call(arguments) // 拿到构造函数，也就是第一个参数
+      o.__proto__ = Constructor.prototype
+
+      // 执行构造函数，把属性赋值给新对象
+      Constructor.call(o, arguments)
+
+      return o
+  }
+  ```
 ***
 #### setTimeout那些神奇的问题
 * [实现轮询](https://www.cnblogs.com/Mainz/archive/2009/04/27/1444691.html)
@@ -494,3 +510,36 @@
 ***
 #### vue是如何实现双向绑定的
 * [实现自己的vue](https://www.cnblogs.com/libin-1/p/6893712.html)
+#### 面向对象
+* 创建对象的几种方式
+  ```
+  // 字面量的方式
+  var obj = {
+      name: 'zl'
+  }
+
+  // 工厂模式，显示的创建对象
+  function createObj() {
+    var obj = new Object()
+    obj.name = 'zl'
+
+    return obj
+  }
+
+  // 构造函数模式
+  function Person() {
+      this.name = 'zl'
+  }
+
+  var obj = new Person()
+
+  // Object.create(obj)
+
+  实现create:
+  function cerate(obj) {
+      function f() {}
+      f.prototype = obj
+
+      return new f()
+  }
+  ```
