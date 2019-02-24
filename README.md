@@ -578,7 +578,7 @@
   dog.prototype = new animal() // 第二次
 
   其实在第二次，无非子类需要的就是超类的原型副本而已，那么解决方案就是：
-  function extendSuper(child, super) {
+  function extendPrototype(child, super) {
       prototype = Object.create(super.prototype)
       prototype.constructor = child
       child.prototype = prototype
@@ -594,7 +594,7 @@
       this.dog = 'dog'
   }
 
-  extendSuper(child, animal)
+  extendPrototype(child, animal)
 
   ```
   
