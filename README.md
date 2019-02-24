@@ -366,6 +366,9 @@
   pone.hasOwnProperty('name') // true
   ptwo.hasOwnProperty('name') // false
 
+  * 还有一点要注意
+  pone.constructor === Person.prototype.constructor // true 其实就是实例的构造函数当然等于构造函数本身
+
   // create形式
   Object.create(obj)
 
@@ -440,6 +443,7 @@
 
   p1.sayHi() // error 重写原型切断了已经创建实例和原型对象之间的关系
   ```
+* 再来说说继承
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
