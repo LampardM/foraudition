@@ -345,7 +345,7 @@
 
   function Person() {
       this.name = 'zl'
-      this,gifts = ['fe']
+      this.gifts = ['fe']
   }
 
   Person.prototype.sex = 'male'
@@ -447,8 +447,8 @@
   p1.sayHi() // error 重写原型切断了已经创建实例和原型对象之间的关系
   ```
 * 再来说说继承
+  继承之后子实例的constructor:
   ```
-  继承之后子实例的constructor
   function animal() {
       this.name = 'animal'
   }
@@ -462,6 +462,26 @@
   var tedy = new dog()
 
   tedy.costructor == animal.prototype.constructor // 而不是dog，因为重写了原型对象
+
+  * 所有函数的默认原型都是Object，在给子类新增方法的时候一定要写在原型链继承之后
+  ```
+* 原型链继承
+  ```
+  function Person() {
+      this.name = ['zl']
+  }
+
+  function me() {
+      this.sex = 'male'
+  }
+
+  me.prototype = new Person()
+
+  var m1 = new me()
+  var m2 = new me()
+
+  m1.name.push('js')
+  m2.name // ['zl', 'js'] 这是因为现在me的所有实例的prototype都指向Person的一个实例的prototype，所有属性都是共享的
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
