@@ -481,7 +481,71 @@
   var m2 = new me()
 
   m1.name.push('js')
-  m2.name // ['zl', 'js'] 这是因为现在me的所有实例的prototype都指向Person的一个实例的prototype，所有属性都是共享的
+  m2.name // ['zl', 'js'] 这是因为现在me的所有实例的prototype都指向Person的一个实例的prototype，所有属性都是共享的，另外一个缺点就是在创建子类实例的时候无法向超类的构造函数传递参数，其实可以传参，但是会影响所有实例，所以一般不能传参。
+  ```
+* 构造函数的继承
+  ```
+  首先注意一点
+  function animal() {
+      this.name = 'animal'
+  }
+
+  animal.prototype.gifts = ['eat']
+
+  function dog() {
+      animal.call(this) // 此处只是把构造函数的属性赋值给dog，而不是原型上的属性
+  }
+
+  var tedy = new dog()
+  tedy.gifts // undefined
+
+  * 借用构造函数可以把超类构造函数的属性全部赋值给子类的构造函数，这样在子类的所有实例里，引用类型的属性不会相互影响。还有个优点就是可以子类的构造函数可以向超类构造函数传参
+
+  * 那么缺点也很明显，超类的方法都在构造函数中定义，每创建一个实例都要创建一遍方法，无法实现共享
+  ```
+
+* 组合继承
+  ```
+  function animal(){
+      this.name = 'animal'
+      this.gifts = ['eat']
+  }
+
+  animal.prototype.sayHi = function(){
+      console.log('hi')
+  }
+
+  function dog() {
+      animal.call(this) // 实现子类的实例属性不互相影响
+  }
+
+  dog.prototype = new animal() // 实现子类实例的方法共享
+  ```
+
+* 原型式继承
+  ```
+  function animal() {
+      this.name = 'animal'
+      this.sex = ['male']
+  }
+
+  animal.prototype.gifts = ['eat']
+
+  function extend(obj) {
+      function f(){}
+      f.prototype = obj
+
+      return new f()
+  }
+
+  var dog1 = extend(animal)
+  var dog2 = extend(animal)
+
+  dog1.sex.push('fmale')
+  dog2.sex // ['male', 'fmale']
+
+  dog.name // animal
+  dog.gifts // undefined 原型式的继承也只是拿到超类构造函数的属性，而不是超类原型对象上的属性，拿到的这些属性将是返回的实例的共享属性，因为在extend函数内都赋值给了f的prototype
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
