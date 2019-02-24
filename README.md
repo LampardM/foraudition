@@ -273,7 +273,7 @@
   每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。那么，假如我们让原型对象等于另一个类型的实例，结果会怎么样呢?显然，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数 的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立，如此层层递进，就构成了实例与原型的链条，这就是原型链。
 
   a.__proto__.__proto__ .....
-  
+
   ```
 * 原型链的图解：[图解原型链](https://www.cnblogs.com/libin-1/p/5820550.html)
 ***
@@ -447,6 +447,22 @@
   p1.sayHi() // error 重写原型切断了已经创建实例和原型对象之间的关系
   ```
 * 再来说说继承
+  ```
+  继承之后子实例的constructor
+  function animal() {
+      this.name = 'animal'
+  }
+
+  function dog() {
+      this.name = 'dog'
+  }
+
+  dog.prototype = new animal()
+
+  var tedy = new dog()
+
+  tedy.costructor == animal.prototype.constructor // 而不是dog，因为重写了原型对象
+  ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
 ***
