@@ -546,6 +546,56 @@
 
   dog.name // animal
   dog.gifts // undefined 原型式的继承也只是拿到超类构造函数的属性，而不是超类原型对象上的属性，拿到的这些属性将是返回的实例的共享属性，因为在extend函数内都将超类构造函数的属性全部赋值给了f的prototype，也就是变成了f的原型属性。接下来将被所有f的实例共享。
+
+  ES5实现了这个方法，也就是Object.create()
+  ```
+* 寄生继承
+  ```
+  function parasitic(obj) {
+      var clone = Object.create(obj)
+
+      clone.saiHi = function() {
+          console.log('hi')
+      }
+
+      return clone
+  }
+  ```
+
+* 寄生组合继承
+  ```
+  首先明白为什么要用寄生组合继承，因为组合继承会调用两次超类的构造函数
+
+  function animal() {
+      this.name = 'animal'
+  }
+
+  function dog() {
+      animal.call(this) // 第一次
+      this.name = 'dog'
+  }
+
+  dog.prototype = new animal() // 第二次
+
+  其实在第二次，无非子类需要的就是超类的原型副本而已，那么解决方案就是：
+  function extendSuper(child, super) {
+      prototype = Object.create(super.prototype)
+      prototype.constructor = child
+      child.prototype = prototype
+  }
+
+  所以寄生组合继承就是：
+  function animal() {
+      this.name = 'animal'
+  }
+
+  function dog() {
+      animal.call(this)
+      this.dog = 'dog'
+  }
+
+  extendSuper(child, animal)
+
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
