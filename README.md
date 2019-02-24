@@ -545,7 +545,7 @@
   dog2.sex // ['male', 'fmale']
 
   dog.name // animal
-  dog.gifts // undefined 原型式的继承也只是拿到超类构造函数的属性，而不是超类原型对象上的属性，拿到的这些属性将是返回的实例的共享属性，因为在extend函数内都赋值给了f的prototype
+  dog.gifts // undefined 原型式的继承也只是拿到超类构造函数的属性，而不是超类原型对象上的属性，拿到的这些属性将是返回的实例的共享属性，因为在extend函数内都将超类构造函数的属性全部赋值给了f的prototype，也就是变成了f的原型属性。接下来将被所有f的实例共享。
   ```
   
 * 继承优缺点：[继承的优缺点](http://www.cnblogs.com/lanyueff/p/7792009.html)
