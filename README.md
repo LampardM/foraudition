@@ -848,7 +848,7 @@
   }
 
   run() // 'zl' Window
-  
+
   ```
 ***
 #### 柯里化和函数式编程
@@ -880,6 +880,23 @@
 [1, 2, 3].reduce(function(pre, next) {
     return pre + next
 })
+
+原生实现reduce
+Array.prototype.ruduce = function(callback, initvalue){
+    var pre = initvalue
+    var k
+
+    if(typeof initvalue === 'undefined') {
+        pre = this[0]
+        k = 1
+    }
+
+    for(k;k<this.length;k++) {
+        pre = callback(pre, this[k])
+    }
+
+    return pre
+}
 ```
 ***
 #### vue是如何实现双向绑定的
