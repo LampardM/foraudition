@@ -902,11 +902,36 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### vue是如何实现双向绑定的
 * [实现自己的vue](https://www.cnblogs.com/libin-1/p/6893712.html)
 ***
+#### 实现trim
+* 原生实现trim()
+  ```
+  String.prototype.metrim = function() {
+      var reg = /^\s+|\s+$/g
+
+      return this.replace(reg, '')
+  }
+  ```
+***
 #### canvas和svg的异同点
 ***
 #### 前端缓存相关
 ***
 #### HTTP相关
+***
+#### 正则相关
+* 邮箱正则
+  ```
+  var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[_-]{0,1}\.)+[A-Za-z\d]{2,4}$/
+
+  var email = "lam.long.163@sina.com.cn"
+  var email2 = 'lam-2.sina@163.com'
+
+  // 技巧：
+  * 开始为字母数字[A-Za-z\d]，开始之后和@之前的可以为-xxx _xxx .xxx 故[A-Za-z\d]+([_-.][A-Za-z\d]+)*@
+  * 紧跟@的是xxx- xxx_ xxx. 但.是必须的-_是非必须的，故@([A-Za-z\d]+[-_]{0,1}\.)+
+  * 最后[A-Za-z\d]{2, 4}
+
+  ```
 ***
 #### 算法和数据结构相关
 ***
