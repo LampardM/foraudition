@@ -913,6 +913,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
 ***
 #### canvas和svg的异同点
+* [异同点](https://www.cnblogs.com/Renyi-Fan/p/9223071.html)
 ***
 #### 前端缓存相关
 ***
