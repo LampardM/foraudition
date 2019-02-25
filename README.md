@@ -809,33 +809,47 @@
 
   会报错，在对象内部的函数表达式访问不到存放当前函数的变量，但是可以通过this访问
   ```
-  * 闭包的应用
-    ```
-    * 设计私有的方法和变量
-    function animal() {
-        var name = 'dog'
+* 闭包的应用
+  ```
+  * 设计私有的方法和变量
+  function animal() {
+      var name = 'dog'
 
-        var say = function() {
-            return name
-        }
+      var say = function() {
+          return name
+      }
 
-        return say
-    }
+      return say
+  }
 
-    * 减少全局变量的使用
-    var objEvent = objEvent || {};
-    (function(){ 
-        var addEvent = function(){ 
-            console.log(1)
-        };
-        function removeEvent(){
-            console.log(2)
-        }
+  * 减少全局变量的使用
+  var objEvent = objEvent || {};
+  (function(){ 
+      var addEvent = function(){ 
+          console.log(1)
+      };
+      function removeEvent(){
+          console.log(2)
+      }
 
-        objEvent.addEvent = addEvent;
-        objEvent.removeEvent = removeEvent;
-    })();
-    ```
+      objEvent.addEvent = addEvent;
+      objEvent.removeEvent = removeEvent;
+  })();
+  ```
+* 区别闭包的变量访问和this访问
+  ```
+  function run() {
+      var name = 'zl'
+
+      setTimeout(function() {
+          console.log(name)
+          console.log(this)
+      },1000)
+  }
+
+  run() // 'zl' Window
+  
+  ```
 ***
 #### 柯里化和函数式编程
 * 柯里化的定义：是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。即是接受一个参数，返回一个函数。
