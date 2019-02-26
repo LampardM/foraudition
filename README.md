@@ -916,6 +916,8 @@ Array.prototype.ruduce = function(callback, initvalue){
 * [异同点](https://www.cnblogs.com/Renyi-Fan/p/9223071.html)
 ***
 #### 前端缓存相关
+* 必会的缓存基础
+  [前端缓存基础](https://mp.weixin.qq.com/s/b_vo_epjycDsGvczU6ol3Q)
 ***
 #### HTTP相关
 * TCP/IP协议族的分层
