@@ -919,11 +919,13 @@ Array.prototype.ruduce = function(callback, initvalue){
 ***
 #### HTTP相关
 * TCP/IP协议族的分层
+  ```
   应用层 传输层 网络层 链路层
   应用层：FTP DNS HTTP
   传输层：TCP(传输控制协议) UDP(用户数据协议) [UDP和TCP区别](https://www.cnblogs.com/xiaomayizoe/p/5258754.html)
   网络层：IP 传输数据包
   链路层：处理硬件
+  ```
 * 一次HTTP请求的大致过程
   应用层HTTP发送请求，在传输层TCP将报文分割并添加序号和端口号，到网络层增加作为通信目的地的MAC地址传输给链路层
 * 什么是字节流服务
