@@ -1009,4 +1009,12 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### Vue相关
 ***
 #### React相关
+* React路由原理
+  [深入路由原理](https://blog.csdn.net/sinat_17775997/article/details/83477138)
+***
+#### 移动端适配1px
+***
+#### 防抖和节流
+***
+#### from表单可以跨域么
 ***
