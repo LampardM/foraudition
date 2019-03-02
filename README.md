@@ -1004,7 +1004,52 @@ Array.prototype.ruduce = function(callback, initvalue){
 
   ```
 ***
+#### 递归
+* 什么是尾递归
+  ```
+  function factorial(n) {
+      if(n === 0) return 1
+
+      return n * factorial(n-1)
+  }
+
+  尾递归就是避免每次都将函数压入栈，每一个递归不依赖于上一个递归调用的值
+
+  function factorial(n, total = 1) {
+      if(n === 0) return 1
+
+      return factorial(n - 1, n * total)
+  }
+  ```
+* 斐波那契数列
+  ```
+  function fib(n) {
+      if(n <= 1) return n
+      return fib(n - 1) + fib(n - 2)
+  }
+  ```
+***
 #### 算法和数据结构相关
+* 快速排序(二分递归)
+  ```
+  function quikSort(arr) {
+      if(arr.length < 2) return arr
+
+      var min = arr[0]
+      var small = []
+      var big = []
+
+      arr.forEach(function(x) {
+          if(x < min) {
+              small.push(x)
+          } else if(x > min) {
+              big.push(x)
+          } 
+      })
+
+      return test(small).concat([min]).concat(test(big))
+  }
+  ```
 ***
 #### Vue相关
 ***
