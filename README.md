@@ -1079,7 +1079,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
   function throttle(fn, delay) {
       var timer = null,
-          tart;
+          start;
 
       return function loop() {
           var now = Date.now()
