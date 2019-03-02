@@ -1151,6 +1151,62 @@ Array.prototype.ruduce = function(callback, initvalue){
       return arr
   } 
   ```
+* 数组的去重
+  ```
+  function unique(arr) {
+      var newarr = []
+
+      for(var i=0;i<arr.length;i++) {
+          if(newarr.indexOf(arr[i]) == -1) {
+              newarr.push(arr[i])
+          }
+      }
+
+      return newarr
+  }
+
+  function unique(arr) {
+      var obj = {}
+      var newarr = []
+
+      for(var i=0;i<arr.length;i++) {
+          if(!obj[arr[i]]) {
+              newarr.push(arr[i])
+              obj[arr[i]] = true
+          }
+      }
+
+      return newarr
+  }
+  ```
+* 字符串出现最对的字母和次数
+  ```
+  function count(str) {
+    var obj = {}
+
+    for(var i=0;i<str.length;i++) {
+        if(!obj[str[i]]) {
+            obj[str[i]] = 1
+        } else {
+            obj[str[i]] += 1
+        }
+    }
+
+    // { a: 2, c: 1 }
+    var maxvalue = ''
+    var maxcount = 0
+
+    for(var k in obj) {
+        if(obj[k] >= maxcount) {
+            maxvalue = k
+            maxcount = obj[k]
+        }
+    }
+
+    return [maxvalue, maxcount]
+  }
+  ```
+
 ***
 #### Vue相关
 ***
