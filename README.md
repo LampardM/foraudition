@@ -1289,6 +1289,7 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### 跨域的解决方式
 * 跨域的那些事
   [很全的跨域解决方案](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
+* jsonp的跨域原理[jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
 ***
