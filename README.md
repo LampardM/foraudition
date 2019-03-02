@@ -1243,6 +1243,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   [深入路由原理](https://blog.csdn.net/sinat_17775997/article/details/83477138)
 ***
 #### 移动端适配1px
+* [1px解决方案](https://blog.csdn.net/xuexizhe88/article/details/80566552)
 ***
 #### 防抖和节流
 * 防抖(只要有动作，就推迟一定的时间间隔执行)
@@ -1286,6 +1287,8 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
 ***
 #### 跨域的解决方式
+* 跨域的那些事
+  [很全的跨域解决方案](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
 ***
