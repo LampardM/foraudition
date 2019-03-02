@@ -1107,6 +1107,50 @@ Array.prototype.ruduce = function(callback, initvalue){
       return arr
   }
   ```
+* 多纬数组转一纬数组
+  ```
+  function lat(arr) {
+       var newarr = []
+
+       function change(arr) {
+           for(var i=0;i<arr.length;i++) {
+               if(Object.prototype.toString.call(arr[i]) === '[object Array]') {
+                   change(arr[i])
+               } else {
+                   newarr.push(arr[i])
+               }
+           }
+       }
+
+       change(arr)
+
+       return newarr
+  }
+  ```
+* 数组的插入操作
+  ```
+  function insert(arr, x, i) {
+      for(var k=arr.length-1;k>=i-1;k--) {
+          arr[k+1] = arr[k]
+      }
+
+      arr[i] = x
+
+      return arr
+  }
+  ```
+* 数组的删除操作
+  ```
+  function deleteArr(arr, index) {
+      for(var k=i;k<arr.lenth;k++){
+          arr[k] = arr[k+1]
+      }
+
+      arr.length--
+
+      return arr
+  } 
+  ```
 ***
 #### Vue相关
 ***
@@ -1162,3 +1206,4 @@ Array.prototype.ruduce = function(callback, initvalue){
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
 ***
 #### 设计模式
+***
