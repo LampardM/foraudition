@@ -1060,6 +1060,48 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### 移动端适配1px
 ***
 #### 防抖和节流
+* 防抖(只要有动作，就推迟一定的时间间隔执行)
+  ```
+  function debounce(fn, delay) {
+      var timer = null
+
+      return function() {
+          timer && clearTimeout(timer)
+          var self = this
+
+          timer = setTimeout(function() {
+              fn.apply(self, arguments)
+          }, delay)
+      }
+  }
+  ```
+* 节流(固定间隔执行相关操作)
+  ```
+  function throttle(fn, delay) {
+      var timer = null,
+          tart;
+
+      return function loop() {
+          var now = Date.now()
+          var self = this
+
+          if(!start) start = now
+          timer && clearTimeout(timer)
+
+          if(now - start >= delay) {
+              fn.apply(self, arguments)
+              start = now
+          } else {
+              timer = setTimeout(function() {
+                  loop.apply(self)
+              }, 50)
+          }
+      }
+  }
+  ```
 ***
+#### 跨域的解决方式
 #### from表单可以跨域么
+* from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
 ***
+#### 设计模式
