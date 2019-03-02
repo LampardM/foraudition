@@ -1179,6 +1179,34 @@ Array.prototype.ruduce = function(callback, initvalue){
       return newarr
   }
   ```
+* 根据属性去重
+  ```
+  var arr = [{name: 1}, {name:1}, {name;2}]
+
+  function(arr) {
+      var obj = {}
+      var newarr = []
+
+      for(var i=0;i<arr.length;i++) {
+          if(!obj[arr[i][name]]) {
+              newarr.push(arr[i])
+              obj[arr[i][name]] = true
+          }
+      }
+
+      return newarr
+  }
+
+  或者
+  function unique(arr, name) {
+      var obj = {}
+
+      return arr.reduce(function(pre, next) {
+          obj[next[name]] ? '' : obj[next[name]] = true && pre.push(next)
+          return pre
+      },[])
+  }
+  ```
 * 字符串出现最对的字母和次数
   ```
   function count(str) {
