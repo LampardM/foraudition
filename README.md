@@ -1005,7 +1005,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
 ***
 #### 递归
-* 什么是尾递归
+* 什么是尾递归[尾递归详细解释](https://juejin.im/post/5acdd7486fb9a028ca53547c)
   ```
   function factorial(n) {
       if(n === 0) return 1
@@ -1013,7 +1013,7 @@ Array.prototype.ruduce = function(callback, initvalue){
       return n * factorial(n-1)
   }
 
-  尾递归就是避免每次都将函数压入栈，每一个递归不依赖于上一个递归调用的值
+  尾递归就是避免每次都将函数压入栈，每一个递归不依赖于上一个递归调用的值，就是返回一个函数，让当前的函数是执行完的状态，当前函数出栈
 
   function factorial(n, total = 1) {
       if(n === 0) return 1
@@ -1026,6 +1026,16 @@ Array.prototype.ruduce = function(callback, initvalue){
   function fib(n) {
       if(n <= 1) return n
       return fib(n - 1) + fib(n - 2)
+  }
+
+  假如有10级阶梯，每次可走一步或者两步，一共有多少种走法
+  function step(n) {
+      if(n === 1) return 1
+      if(n === 2) return 2
+
+      if(n > 2) {
+          return step(n - 1) + step(n - 2)
+      }
   }
   ```
 ***
@@ -1048,6 +1058,53 @@ Array.prototype.ruduce = function(callback, initvalue){
       })
 
       return test(small).concat([min]).concat(test(big))
+  }
+  ```
+* 冒泡排序
+  ```
+  function buble(arr) {
+      for(var i=0;i<arr.length-1;i++) {
+          for(var j=0;j<arr.length-1;j++) {
+              if(arr[j] > arr[j+1]) {
+                  var tep = arr[j]
+                  arr[j] = arr[j+1]
+                  arr[j+1] = tep
+              }
+          }
+      }
+
+      return arr
+  }
+
+  冒泡排序的优化
+  function buble(arr) {
+      for(var i=0;i<arr.length-1;i++) {
+          for(var j=0;j<arr.length-i-1;j++) {
+              if(arr[j] > arr[j+1]) {
+                  var tep = arr[j]
+                  arr[j] = arr[j+1]
+                  arr[j+1] = tep
+              }
+          }
+      }
+
+      return arr
+  }
+  ```
+* 选择排序
+  ```
+  function choose(arr) {
+      for(var i=0;i<arr.length;i++) {
+          for(var j=0;j<arr.length;j++) {
+              if(arr[i] < arr[j]){
+                  var tep = arr[i]
+                  arr[i] = arr[j]
+                  arr[j] = tep
+              }
+          }
+      }
+
+      return arr
   }
   ```
 ***
