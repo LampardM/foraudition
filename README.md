@@ -1064,8 +1064,8 @@ Array.prototype.ruduce = function(callback, initvalue){
 * 冒泡排序
   ```
   function buble(arr) {
-      for(var i=0;i<arr.length-1;i++) {
-          for(var j=0;j<arr.length-1;j++) {
+      for(var i=0;i<arr.length;i++) {
+          for(var j=0;j<arr.length;j++) {
               if(arr[j] > arr[j+1]) {
                   var tep = arr[j]
                   arr[j] = arr[j+1]
@@ -1085,6 +1085,24 @@ Array.prototype.ruduce = function(callback, initvalue){
                   var tep = arr[j]
                   arr[j] = arr[j+1]
                   arr[j+1] = tep
+              }
+          }
+      }
+
+      return arr
+  }
+
+  再次优化
+  function bubble(arr) {
+      var flag = false
+
+      for(var i=0;i<arr.length-1 && flag;i++) {
+          for(var j=0;j<arr,length-i-1;j++){
+              if(arr[j] > arr[j+1]) {
+                  var tep = arr[j]
+                  arr[j] = arr[j+1]
+                  arr[j+1] = tep
+                  flag = true
               }
           }
       }
