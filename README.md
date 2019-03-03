@@ -1261,6 +1261,20 @@ Array.prototype.ruduce = function(callback, initvalue){
   销毁时：
   componentWillUnMount()
   ```
+* react的性能优化
+  ```
+  1 事件在构造函数中绑定
+  2 利用好componentShouldUpdate
+  3 React.pureComponent
+  4 使用Immutable.js，每一次修改引用类型的值都返回一个新的值
+  5 组件使用key
+  6 全局的Context对象，创建provider和consumer
+  ```
+* React的Link组建和a有什么区别
+  ```
+  a标签会有明显的消失出现的刷新感而Link标签则是按需更新，整个页面并不会全部重新加载
+  性能上有所优化，用户体验更好
+  ```
 ***
 #### 移动端适配1px
 * [1px解决方案](https://blog.csdn.net/xuexizhe88/article/details/80566552)
@@ -1312,6 +1326,31 @@ Array.prototype.ruduce = function(callback, initvalue){
 * jsonp的跨域原理 [jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
+#### export和export default的区别
+* [区别](https://mp.weixin.qq.com/s/bIU_FvesizFJ3D_6KWRPHA)
+  ```
+  1 export可以有多个，而export default一个文件只有一个
+  2 export导出的文件，import时需要{}，而export default不需要
+  ```
 ***
+#### loader和plugin的区别
+* loader主要是用来加载文件的，webpack只能加载commonjs规范的文件，css 图片 coffee jade等都需要转换才行
+* plugin主要是用来扩展webpack自身的功能
+#### 清楚浮动的几种方式
+* 如何清除浮动 [清楚浮动的方法](https://www.cnblogs.com/Gabriel-Wei/p/6184392.html)
+  ```
+  1 父元素设置伪类:after和zoom
+    .clearfix:after { clear:both; }
+    .clearfix { zoom:1; }
+
+  2 父级定高度，只适合定高的情况
+
+  3 浮动的元素末尾加上一个空dom，并且设置{ clear:both; }
+
+  4 父级设置overflow: hidden，但是必须设置宽或者zoom:1，而且不能和position一起使用，因为超出会被隐藏
+
+  5 父级设置overflow: auto，但是也必须有宽或者zoom:1，内部宽高超过父级时出现滚动条
+
+  ```
 #### 设计模式
 ***
