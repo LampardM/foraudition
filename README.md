@@ -1275,6 +1275,8 @@ Array.prototype.ruduce = function(callback, initvalue){
   a标签会有明显的消失出现的刷新感而Link标签则是按需更新，整个页面并不会全部重新加载
   性能上有所优化，用户体验更好
   ```
+* React的Fiber
+  [详细的介绍](https://www.jianshu.com/p/bf824722b496)
 ***
 #### 移动端适配1px
 * [1px解决方案](https://blog.csdn.net/xuexizhe88/article/details/80566552)
@@ -1323,7 +1325,10 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### 跨域的解决方式
 * 跨域的那些事
   [很全的跨域解决方案](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
+  [跨域总结](https://segmentfault.com/a/1190000012469713)
 * jsonp的跨域原理 [jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
+* 什么是CORS
+  [理解CORS](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 ***
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
@@ -1424,6 +1429,48 @@ Array.prototype.ruduce = function(callback, initvalue){
               })
           }
       })
+  }
+  ```
+#### 首尾固定的布局
+* 绝对定位
+  ```
+  首尾绝对定位，中间height: 100%; overflow;auto;
+  ```
+* flex布局
+  .warp { display: flex; flex-direction: column; }
+  .content { flex:1; }
+* 相对定位
+  .warp { position: relative; }
+  .header { position: relative; }
+  .content { position: relative; }
+  .footer { position: fixed; }
+***
+#### 数组中的最大值
+* 如何找最大值
+  ```
+  var a = [1 ,2 ,3]
+  // 第一种
+  Array.prototype.max = function() {
+      var max = this[0]
+      for(var i=1;i< this.length;i++) {
+          if(this[i] > max){
+              max = this[i]
+          }
+      }
+
+      return max
+  }
+
+  // 第二种
+  function mesort(a, b) {
+      return a - b 
+  }
+
+  a.sort(mesort) // a[a.length - 1]
+
+  // 第三种
+  function max(arr) {
+      return Math.max.apply(Math, arr)
   }
   ```
 #### 设计模式
