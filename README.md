@@ -1241,6 +1241,26 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### React相关
 * React路由原理
   [深入路由原理](https://blog.csdn.net/sinat_17775997/article/details/83477138)
+* React的生命周期
+  [生命周期详解](https://segmentfault.com/a/1190000004168886?utm_source=tag-newest)
+  ```
+  实例化阶段：
+  getDefaultProps()
+  getInitState()
+  componentWillMount()
+  render()
+  componentDidMount()
+
+  存在期阶段：
+  componentWillReciveProps()
+  componentShouldUpdate()
+  componentWillUpdate()
+  render()
+  componentDidUpdate()
+
+  销毁时：
+  componentWillUnMount()
+  ```
 ***
 #### 移动端适配1px
 * [1px解决方案](https://blog.csdn.net/xuexizhe88/article/details/80566552)
@@ -1289,7 +1309,7 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### 跨域的解决方式
 * 跨域的那些事
   [很全的跨域解决方案](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
-* jsonp的跨域原理[jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
+* jsonp的跨域原理 [jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
 ***
