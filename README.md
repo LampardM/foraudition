@@ -1039,7 +1039,8 @@ Array.prototype.ruduce = function(callback, initvalue){
   }
   ```
 ***
-#### 算法和数据结构相关
+#### 算法和数据结构相关 
+* [排序算法](https://juejin.im/post/58c9d5fb1b69e6006b686bce)
 * 快速排序(二分递归)
   ```
   function quikSort(arr) {
@@ -1105,6 +1106,21 @@ Array.prototype.ruduce = function(callback, initvalue){
       }
 
       return arr
+  }
+  ```
+* 插入排序
+  ```
+  function insert(arr) {
+      for(var i=1;i<arr.length;i++) {
+          var current = arr[i]
+          var index = i - 1
+          while(index>=0 && arr[index] > current) {
+              arr[index+1] = arr[index] // 待比较元素后移一位
+              index-- // 游标前移一位
+          }
+
+          arr[index+1] = current
+      }
   }
   ```
 * 多纬数组转一纬数组
@@ -1234,7 +1250,48 @@ Array.prototype.ruduce = function(callback, initvalue){
     return [maxvalue, maxcount]
   }
   ```
+* 翻转字符串
+  ```
+  function reverseStr(str) {
+      var tep = ''
+      for(var i=str.length-1;i>=0;i--){
+          tep += str[i]
+      }
 
+      return tep
+  }
+
+  或者
+  function reverseStr(str) {
+      var arrstr = str.split('') // ['s', 't', 'r']
+      var i = 0
+      var j = arrstr.length - 1
+
+      while(i < j) {
+          var tep = arrstr[i]
+          arrstr[i] = arrstr[j]
+          arrstr[j] = tep
+          i++
+          j--
+      }
+
+      return arrstr.join('')
+  }
+  ```
+* 生成指定长度字符串
+  ```
+  function randomString(n){
+    var str = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var tmp = '';
+
+    for(var i=0; i<n; i++) {
+        tmp += str.charAt(Math.round(Math.random()*str.length));
+    }
+
+    return tmp;
+  }
+  ```
+* [排序算法](https://juejin.im/post/57dcd394a22b9d00610c5ec8)
 ***
 #### Vue相关
 ***
