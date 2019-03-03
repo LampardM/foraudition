@@ -1431,6 +1431,7 @@ Array.prototype.ruduce = function(callback, initvalue){
       })
   }
   ```
+***
 #### 首尾固定的布局
 * 绝对定位
   ```
@@ -1473,5 +1474,9 @@ Array.prototype.ruduce = function(callback, initvalue){
       return Math.max.apply(Math, arr)
   }
   ```
+***
+#### Promise相关
+* [Promise小书](https://juejin.im/entry/56499ae160b2d1404c4f8834)
+***
 #### 设计模式
 ***
