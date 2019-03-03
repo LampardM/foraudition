@@ -1324,8 +1324,10 @@ Array.prototype.ruduce = function(callback, initvalue){
 * 跨域的那些事
   [很全的跨域解决方案](https://mp.weixin.qq.com/s/6l4IVdCqH4DF6zckmnDc_w)
 * jsonp的跨域原理 [jsonp](https://blog.csdn.net/zhoucheng05_13/article/details/78694766)
+***
 #### from表单可以跨域么
 * from表单可是跨域，因为表单提交浏览器会刷新，不会影响到当前页面，所以浏览器默认这是安全的
+***
 #### export和export default的区别
 * [区别](https://mp.weixin.qq.com/s/bIU_FvesizFJ3D_6KWRPHA)
   ```
@@ -1336,6 +1338,7 @@ Array.prototype.ruduce = function(callback, initvalue){
 #### loader和plugin的区别
 * loader主要是用来加载文件的，webpack只能加载commonjs规范的文件，css 图片 coffee jade等都需要转换才行
 * plugin主要是用来扩展webpack自身的功能
+***
 #### 清楚浮动的几种方式
 * 如何清除浮动 [清楚浮动的方法](https://www.cnblogs.com/Gabriel-Wei/p/6184392.html)
   ```
@@ -1351,6 +1354,77 @@ Array.prototype.ruduce = function(callback, initvalue){
 
   5 父级设置overflow: auto，但是也必须有宽或者zoom:1，内部宽高超过父级时出现滚动条
 
+  ```
+***
+#### 为什么使用transfrom绘制动画而不是left和top
+* 差别在哪里
+  ```
+  使用left和top，每一帧都需要在CPU上计算，并进行回流和重绘，而transfrom会使用GPU提高非常快的帧率处理，没有进行浏览器的回流
+  ```
+***
+#### 关于前端的性能优化
+* [一般的前端性能优化](https://www.cnblogs.com/liulilin/p/7245125.html)
+  ```
+  1 减少HTTP的请求
+  2 减少回流和重绘
+  3 减少dom操作
+  4 减少js css等资源大小，压缩代码
+  5 利用缓存
+  6 CDN加速
+  ```
+***
+#### 关于Promise.all
+* catch错误
+  ```
+  var p1 = new Promise((resolve, reject) => {
+        resolve('hello');
+    })
+    .then(result => result)
+    .catch(e => e);
+
+  var p2 = new Promise((resolve, reject) => {
+        throw new Error('报错了');
+    })
+    .then(result => result)
+    .catch(e => e);
+
+  Promise.all([p1,p2])
+    .then(function(value) {
+        console.log(value);
+    })
+    .catch(function(re) {
+        console.log(re);
+    })
+
+  此时p2的错误被p2 catch到了，所以Promise.all会正常执行then
+  ```
+* 实现Promise.all
+  ```
+  function promiseAll(arr) {
+      return new Promise(function(reslove, reject){
+          var len = arr.length;
+          var donecount = 0;
+          var doneArray = new Array(len);
+
+          for(var i=0;i<len;i++){
+              Promise.relove(arr[i])
+              .then(function(value){
+                  donecount++;
+                  doneArray[i] = value;
+
+                  if(donecount == len) {
+                      return reslove(doneArray)
+                  }
+
+              }, function(re){
+                  return reject(re)
+              })
+              .catch(function(err){
+                  console.log(err)
+              })
+          }
+      })
+  }
   ```
 #### 设计模式
 ***
