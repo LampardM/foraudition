@@ -1092,11 +1092,13 @@ Array.prototype.ruduce = function(callback, initvalue){
       return arr
   }
 
-  再次优化
+  再次优化(我们设定一个交换的标识符，初始值为true，在每一轮排序之前把它置为false，如果比较后需要交换，就置为true，证明这一轮排序还没有得到最终有序序列。如果不用交换了，那就证明已经有序了。不需要进行下一轮判断)
   function bubble(arr) {
-      var flag = false
+      var flag = true
 
       for(var i=0;i<arr.length-1 && flag;i++) {
+          flag = false
+
           for(var j=0;j<arr,length-i-1;j++){
               if(arr[j] > arr[j+1]) {
                   var tep = arr[j]
