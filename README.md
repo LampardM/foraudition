@@ -1439,6 +1439,110 @@ Array.prototype.ruduce = function(callback, initvalue){
 
   ```
 ***
+#### CSS相关
+* 标准盒模型和IE盒模型
+  ```
+  设置box-sizing：content-box border-box
+  ```
+* 什么是BFC(创建格式化上下文)  
+  ```
+  形成BFC的条件：
+  1 浮动元素，除去none
+  2 定位元素
+  3 display: inline-block table-cell
+  4 overflow除去visible
+
+  BFC特性：
+  1 内部的box会在垂直方向上一个一个排列
+  2 垂直方向上的距离由margin决定
+  3 bfc的区域不会与float元素区域重叠
+
+  BFC的使用：
+  左边固定，右边自适应
+  <div class="left"></div>
+  <div class="right"></div>
+
+  .left {
+    float: left;
+    width: 200px;
+    height: 300px;
+    margin-right: 10px;
+    background-color: red;
+  }
+
+  .right {
+    overflow: hidden; /* 创建bfc */
+    height: 300px;
+    background-color: purple;
+  }
+
+  两边固定，中间自适应
+  <div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="middle"></div>
+  </div>
+
+  .left {
+    float: left;
+    width: 100px;
+    height: 300px;
+    background-color: green;
+  }
+
+  .right {
+    float: right;
+    width: 100px;
+    height: 300px;
+    background-color: green;
+  }
+
+  .middle {
+    overflow: hidden;  /* 创建bfc */
+    height: 300px;
+    background-color: red;
+  }
+
+  清除浮动
+  ```
+* 圣杯布局
+  ```
+  <div class="container"> 
+    　<div class="main">main</div> 
+    　<div class="left">left</div> 
+    　<div class="right">right</div> 
+  </div>
+
+  .container {
+    padding: 0 300px 0 200px; // 给左右预留空白
+  }
+
+  .left, .main, .right {
+    position: relative;
+    min-height: 130px;
+    float: left;
+  }
+
+  .left {
+    left: -200px;
+    margin-left: -100%;
+    background: green;
+    width: 200px;
+  }
+
+  .right {
+    right: -300px;
+    margin-left: -300px;
+    background-color: red;
+    width: 300px;
+  }
+
+  .main {
+    background-color: blue;
+    width: 100%;
+  }
+  ```
+***
 #### 为什么使用transfrom绘制动画而不是left和top
 * 差别在哪里
   ```
