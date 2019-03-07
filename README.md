@@ -1315,6 +1315,31 @@ Array.prototype.ruduce = function(callback, initvalue){
 * [排序算法](https://juejin.im/post/57dcd394a22b9d00610c5ec8)
 ***
 #### Vue相关
+* 路由守卫
+  ```
+  全局路前置守卫
+  router.beforeEach((to, from, next)=> {})
+
+  全局后置守卫
+  router.afterEach((to, from)=> {})
+
+  路由独享守卫
+  beforeEnter: (to, from ,next) => {}
+
+  组件内的守卫
+  beforeRouteEnter(to. from, next){} // 不能访问实例this
+  beforeRouteUpdate(to. from, next){}
+  beforeRouteLeave(to. from, next){}
+
+  ```
+* 第一次加载触发哪些生命周期
+  ```
+  beforeCreate created beforeMount mounted
+  ```
+* 浏览器返回会触发哪些生命周期
+  ```
+  SPA区分是否页面级别组件有keep-live，没有的话beforeCreate created beforeMount mounted都会触发， 有的话都不触发
+  ```
 ***
 #### React相关
 * React路由原理
