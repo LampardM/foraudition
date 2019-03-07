@@ -226,7 +226,7 @@
 
           if(typeof initObj[i] === 'object'){
               obj[i] = Object.prototype.toString.call(initObj[i] === '[object array]' ? [] : {})
-              deepClone(initObj[i, ]obj[i])
+              deepClone(initObj[i], obj[i])
           } else {
               obj[i] = initObj[i]
           }
