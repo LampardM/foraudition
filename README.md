@@ -1137,15 +1137,17 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
   function insert(arr) {
       for(var i=1;i<arr.length;i++) {
-          var current = arr[i]
-          var index = i - 1
-          while(index>=0 && arr[index] > current) {
-              arr[index+1] = arr[index] // 待比较元素后移一位
-              index-- // 游标前移一位
+          var j = i - 1
+          
+          while(arr[j] > arr[i]) {
+              arr[j+1] = arr[j] // 待比较元素后移一位
+              j-- // 游标前移一位
           }
 
-          arr[index+1] = current
+          arr[j+1] = arr[i]
       }
+
+      return arr
   }
   ```
 * 多纬数组转一纬数组
