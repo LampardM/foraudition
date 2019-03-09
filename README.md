@@ -315,7 +315,7 @@
   // 工厂模式，显示的创建对象
   function createObj() {
     var o = new Object()
-    0.name = 'zl'
+    o.name = 'zl'
 
     return o
   }
@@ -1046,10 +1046,11 @@ Array.prototype.ruduce = function(callback, initvalue){
 * [排序算法](https://juejin.im/post/58c9d5fb1b69e6006b686bce)
 * 快速排序(二分递归)
   ```
-  function quikSort(arr) {
+  function quickSort(arr) {
       if(arr.length < 2) return arr
 
-      var min = arr[0]
+      var minIndex = Math.floor(arr.length/2)
+      var min = arr.splice(minIndex, 1)
       var small = []
       var big = []
 
@@ -1061,7 +1062,7 @@ Array.prototype.ruduce = function(callback, initvalue){
           } 
       })
 
-      return test(small).concat([min]).concat(test(big))
+      return quickSort(small).concat(min).concat(quickSort(big))
   }
   ```
 * 冒泡排序
