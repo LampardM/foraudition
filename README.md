@@ -357,17 +357,20 @@
 
   * 原型对象上的属性不会被实例重写，最多只能是被屏蔽
 
-  * hasOwnProperty可以知道实例属性到底是实例属性还是原型属性
+  * hasOwnProperty可以知道实例属性到底是实例属性还是构造函数原型链上的属性
   function Person() {
       this.name = 'zl'
   }
 
   var pone = new Person()
+
+  pone.hasOwnProperty('name') // true
+
+  Person.prototype.sex = 'male'
+
   var ptwo = new Person()
 
-  pone.name = 'zlong'
-  pone.hasOwnProperty('name') // true
-  ptwo.hasOwnProperty('name') // false
+  ptwo.hasOwnProperty('sex') // false
 
   * 还有一点要注意
   pone.constructor === Person.prototype.constructor // true 其实就是实例的构造函数当然等于构造函数本身
