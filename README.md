@@ -1138,13 +1138,14 @@ Array.prototype.ruduce = function(callback, initvalue){
   function insert(arr) {
       for(var i=1;i<arr.length;i++) {
           var j = i - 1
-          
-          while(arr[j] > arr[i]) {
+          var key = arr[i]
+
+          while(arr[j] > key) {
               arr[j+1] = arr[j] // 待比较元素后移一位
               j-- // 游标前移一位
           }
 
-          arr[j+1] = arr[i]
+          arr[j+1] = key
       }
 
       return arr
