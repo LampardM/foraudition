@@ -1355,6 +1355,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   [从React了解前端路由](https://github.com/youngwind/blog/issues/109)
 * React的生命周期
   [生命周期详解](https://segmentfault.com/a/1190000004168886?utm_source=tag-newest)
+  pushstate和replacestate不会触发onpopstate，浏览器的回退前进会触发
   ```
   实例化阶段：
   getDefaultProps()
