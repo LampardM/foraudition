@@ -1629,7 +1629,7 @@ Array.prototype.ruduce = function(callback, initvalue){
           var doneArray = new Array(len);
 
           for(var i=0;i<len;i++){
-              Promise.relove(arr[i])
+              Promise.resolve(arr[i].call(this))
               .then(function(value){
                   donecount++;
                   doneArray[i] = value;
