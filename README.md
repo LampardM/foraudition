@@ -1252,7 +1252,7 @@ Array.prototype.ruduce = function(callback, initvalue){
       },[])
   }
   ```
-* 字符串出现最对的字母和次数
+* 字符串出现最多的字母和次数
   ```
   function count(str) {
     var obj = {}
