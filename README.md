@@ -1700,7 +1700,7 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
   class Player {
 
-    t() {
+    constructor() {
       // 初始化观察者列表
       this.watchers = {}
     }
