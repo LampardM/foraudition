@@ -1696,4 +1696,43 @@ Array.prototype.ruduce = function(callback, initvalue){
 * [Promise小书](https://juejin.im/entry/56499ae160b2d1404c4f8834)
 ***
 #### 设计模式
+* 发布订阅模式
+  ```
+  class Player {
+
+    t() {
+      // 初始化观察者列表
+      this.watchers = {}
+    }
+
+    // 发布事件
+    _publish(event, data) {
+      if (this.watchers[event] && this.watchers[event].length) {
+        this.watchers[event].forEach(callback => callback.bind(this)(data))
+      }
+    }
+
+    // 订阅事件
+    subscribe(event, callback) {
+      this.watchers[event] = this.watchers[event] || []
+      this.watchers[event].push(callback)
+    }
+  }
+
+  // 实例化播放器
+  const player = new Player()
+  console.log(player)
+
+  // 播放事件回调函数1
+  const onPlayerPlay1 = function(data) {
+    console.log('1: Player is play, the `this` context is current player', this, data)
+  }
+
+  // 可订阅多个不同事件
+  player.subscribe('play', onPlayerPlay1)
+
+  // 可以在外部手动发出事件（真实生产场景中，发布特性一般为类内部私有方法）
+  player._publish('play', true)
+
+  ```
 ***
