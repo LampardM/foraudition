@@ -1390,6 +1390,8 @@ Array.prototype.ruduce = function(callback, initvalue){
   ```
 * React的Fiber
   [详细的介绍](https://www.jianshu.com/p/bf824722b496)
+* 纯组建
+  [无状态组件和纯组件](https://blog.csdn.net/r122555/article/details/82783944)
 ***
 #### 移动端适配1px
 * [1px解决方案](https://blog.csdn.net/xuexizhe88/article/details/80566552)
