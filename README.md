@@ -634,7 +634,7 @@
   function meNew(fn, ...arg) {
       var obj = Object.create(fn.prototype)
       var ret = fn.apply(fn, ...arg)
-      return ret instanceof Object ? ret: obj
+      return ret instanceof Object ? ret : obj
   }
   ```
 ***
