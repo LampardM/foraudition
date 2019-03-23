@@ -5,7 +5,7 @@
 * macro-task(宏任务)：包括整体代码script，setTimeout，setInterval
 * micro-task(微任务)：Promise，process.nextTick
     ```
-    setTimeout(function(){
+    setTimeout(function() {
         console.log('1')
     });
 
