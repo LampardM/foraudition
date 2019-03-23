@@ -9,7 +9,7 @@
         console.log('1')
     });
 
-    new Promise(function(resolve){
+    new Promise(function(resolve) {
         console.log('2');
         for(var i = 0; i < 10000; i++){
             i == 99 && resolve();
